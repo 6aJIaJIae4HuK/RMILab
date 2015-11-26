@@ -3,6 +3,7 @@ package sample;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Scanner;
 
 /**
  * Created by BALALAIKA on 15.11.2015.
@@ -16,7 +17,17 @@ public class Server {
             Registry registry = LocateRegistry.createRegistry(12345);
             registry.bind("RMIServerInterface", stub);
 
-            server.start();
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    server.start();
+                }
+            };
+            (new Thread(runnable)).start();
+            Scanner scanner = new Scanner(System.in);
+            String line;
+            while (!(line = scanner.nextLine()).equals("exit"));
+            server.closeServer();
         }
         catch (Exception e) {
             e.printStackTrace();

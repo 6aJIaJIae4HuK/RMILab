@@ -38,7 +38,7 @@ public class RMIClient implements RMIClientInterface {
 
     public void addCompetition(String name, LocalDateTime dateTime) throws RemoteException {
         Competition newCompetition = new Competition(name, dateTime.getYear(), dateTime.getMonthValue(), dateTime.getDayOfMonth(), dateTime.getHour(), dateTime.getMinute());
-        competitions.add(newCompetition);
+        //competitions.add(newCompetition);
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -48,13 +48,13 @@ public class RMIClient implements RMIClientInterface {
     }
 
     public void addResultToCompetition(Competition competition, String participant, double time) throws RemoteException {
-        for (Iterator<Competition> it = competitions.iterator(); it.hasNext();) {
+        /*for (Iterator<Competition> it = competitions.iterator(); it.hasNext();) {
             Competition c = it.next();
             if (c.equals(competition)) {
                 c.getResults().add(new Result(participant, time));
                 break;
             }
-        }
+        }*/
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -78,5 +78,9 @@ public class RMIClient implements RMIClientInterface {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public RMIServerInterface getServer() {
+        return server;
     }
 }

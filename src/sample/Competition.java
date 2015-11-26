@@ -114,4 +114,26 @@ public class Competition implements Serializable {
             results.add(result);
         }
     }
+
+    public boolean equals(Object o) {
+        if (o == null)
+            return false;
+        if (getClass() != o.getClass())
+            return false;
+        Competition competition = (Competition)o;
+        boolean res = true;
+        res = res && (this.yearProperty.getValue().equals(competition.getYearProperty().getValue()));
+        res = res && (this.monthProperty.getValue().equals(competition.getMonthProperty().getValue()));
+        res = res && (this.dayProperty.getValue().equals(competition.getDayProperty().getValue()));
+        res = res && (this.hourProperty.getValue().equals(competition.getHourProperty().getValue()));
+        res = res && (this.minuteProperty.getValue().equals(competition.getMinuteProperty().getValue()));
+
+        res = res && (this.results.size() == competition.getResults().size());
+
+        for (int i = 0; i < results.size() && res; i++) {
+            res = res && (this.results.get(i).equals(competition.getResults().get(i)));
+        }
+
+        return res;
+    }
 }

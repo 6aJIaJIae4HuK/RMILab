@@ -50,6 +50,10 @@ public class Main extends Application {
         return competitions;
     }
 
+    public RMIClient getClient() {
+        return rmiClient;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

@@ -31,6 +31,8 @@ public class RMIServer implements RMIServerInterface {
     private List<Competition> competitions = new LinkedList<>();
     private BlockingQueue<RMIClientInterface> clients = new LinkedBlockingQueue<>();
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private boolean isRunning = false;
+
     public RMIServer() throws ParserConfigurationException,
                               SAXException,
                               TransformerException,
@@ -103,11 +105,8 @@ public class RMIServer implements RMIServerInterface {
     }
 
     public void start() {
-        try {
-            Thread.sleep(60000);
-        }
-        catch (InterruptedException e) {
-            e.printStackTrace();
+        isRunning = true;
+        while (isRunning) {
         }
         try {
             closeServer();
@@ -115,6 +114,7 @@ public class RMIServer implements RMIServerInterface {
         catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     public void closeServer() throws ParserConfigurationException,
@@ -136,7 +136,7 @@ public class RMIServer implements RMIServerInterface {
                     competition.getNameProperty().getValue());
 
             for (Result result : competition.getResults()) {
-                addResult(doc, competitionNode, result.getNameProperty().getValue(), result.getTimeProperty().toString());
+                addResult(doc, competitionNode, result.getNameProperty().getValue(), result.getTimeProperty().getValue().toString());
             }
         }
 

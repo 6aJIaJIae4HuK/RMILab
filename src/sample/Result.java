@@ -46,4 +46,17 @@ public class Result implements Serializable {
             timeProperty = new SimpleDoubleProperty();
         timeProperty.setValue(time);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null)
+            return false;
+        if (getClass() != o.getClass())
+            return false;
+        Result result = (Result)o;
+        boolean res = true;
+        res = res && (this.nameProperty.getValue().equals(result.getNameProperty().getValue()));
+        res = res && (this.timeProperty.getValue().equals(result.getTimeProperty().getValue()));
+        return res;
+    }
 }
