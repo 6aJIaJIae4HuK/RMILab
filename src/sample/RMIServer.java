@@ -109,7 +109,7 @@ public class RMIServer implements RMIServerInterface {
         while (isRunning) {
         }
         try {
-            closeServer();
+            saveToXML();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -117,7 +117,11 @@ public class RMIServer implements RMIServerInterface {
 
     }
 
-    public void closeServer() throws ParserConfigurationException,
+    public void stopServer() {
+        isRunning = false;
+    }
+
+    private void saveToXML() throws ParserConfigurationException,
                                      TransformerException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();

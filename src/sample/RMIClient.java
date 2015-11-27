@@ -80,6 +80,15 @@ public class RMIClient implements RMIClientInterface {
         }
     }
 
+    public void disconnectFromServer() {
+        try {
+            UnicastRemoteObject.unexportObject(this, true);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public RMIServerInterface getServer() {
         return server;
     }

@@ -1,1 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><Competitions><Competition DateTime="2015-05-10 11:00" Discipline="100m"><Result Participant="rrr" Time="14.5"/><Result Participant="ddd" Time="14.0"/></Competition><Competition DateTime="2015-04-10 11:30" Discipline="30m"><Result Participant="aaa" Time="4.5"/><Result Participant="ddd" Time="11.0"/></Competition><Competition DateTime="2015-04-02 08:00" Discipline="60m"><Result Participant="wdwd" Time="8.0"/><Result Participant="aaaaa" Time="10.0"/><Result Participant="awdaw" Time="9.3"/></Competition></Competitions>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Competitions>
+    <Competition DateTime="2015-05-10 11:00" Discipline="100m">
+        <Result Participant="rrr" Time="14.5"/>
+        <Result Participant="ddd" Time="14.0"/>
+        <Result Participant="aa" Time="1.0"/>
+        <Result Participant="ddd" Time="1.0"/>
+    </Competition>
+    <Competition DateTime="2015-04-10 11:30" Discipline="30m">
+        <Result Participant="aaa" Time="4.5"/>
+        <Result Participant="ddd" Time="11.0"/>
+        <Result Participant="ddd" Time="1.0"/>
+    </Competition>
+    <Competition DateTime="2015-04-02 08:00" Discipline="60m">
+        <Result Participant="wdwd" Time="8.0"/>
+        <Result Participant="aaaaa" Time="10.0"/>
+        <Result Participant="awdaw" Time="9.3"/>
+    </Competition>
+</Competitions>

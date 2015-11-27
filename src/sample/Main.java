@@ -3,11 +3,13 @@ package sample;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
@@ -40,6 +42,13 @@ public class Main extends Application {
 
             rmiClient = new RMIClient(this);
             rmiClient.connectToServer();
+
+            primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    rmiClient.disconnectFromServer();
+                }
+            });
         }
         catch (IOException e) {
             e.printStackTrace();

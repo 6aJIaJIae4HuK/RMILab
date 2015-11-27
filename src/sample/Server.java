@@ -27,7 +27,9 @@ public class Server {
             Scanner scanner = new Scanner(System.in);
             String line;
             while (!(line = scanner.nextLine()).equals("exit"));
-            server.closeServer();
+            server.stopServer();
+            registry.unbind("RMIServerInterface");
+            UnicastRemoteObject.unexportObject(server, true);
         }
         catch (Exception e) {
             e.printStackTrace();
